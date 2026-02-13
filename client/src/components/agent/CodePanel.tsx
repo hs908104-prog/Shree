@@ -1,7 +1,7 @@
 import React from 'react';
 import Editor from 'react-simple-code-editor';
 // @ts-ignore
-import { highlight, languages } from 'prismjs/components/prism-core';
+import Prism from 'prismjs';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
@@ -20,7 +20,7 @@ export function CodePanel({ code }: CodePanelProps) {
         <Editor
           value={code}
           onValueChange={() => {}} // Read only for now
-          highlight={code => highlight(code, languages.jsx || languages.js, 'jsx')}
+          highlight={code => Prism.highlight(code, Prism.languages.jsx || Prism.languages.js, 'jsx')}
           padding={16}
           style={{
             fontFamily: '"JetBrains Mono", monospace',
