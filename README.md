@@ -1,10 +1,10 @@
-# AI Deterministic UI Generator
+# Deterministic UI Builder
 
 A production-quality local web app that converts natural language into structured UI plans and deterministic React code using a fixed component library.
 
 ## 🧠 Project Goal
 
-To build an AI-powered system that follows the pipeline:
+To build a prompt-driven UI system that follows the pipeline:
 **Natural language → Structured UI plan → Deterministic React code → Live preview**
 
 This system strictly adheres to constraints:
@@ -17,7 +17,7 @@ This system strictly adheres to constraints:
 ## 🧱 Tech Stack
 
 - **Frontend**: React (Vite), TypeScript, Tailwind CSS (for the tool itself)
-- **Agent Logic**: Client-side mock implementation (simulating Node.js/OpenAI flow)
+- **Agent Logic**: Client-side mock implementation
 - **State Management**: React State (In-memory)
 - **Styling**: 
   - Tool Interface: Tailwind CSS
@@ -47,7 +47,7 @@ The system is built on a three-stage pipeline:
 To ensure absolute determinism and safety:
 1. **Registry Map**: All allowed components are exported from `client/src/components/fixed/index.tsx`.
 2. **Strict Rendering**: The `PreviewPanel` only renders components that exist in the `ComponentRegistry`. Unknown types are rejected or flagged as errors.
-3. **Static Styling**: All generated components use strict class names (e.g., `.fc-button`, `.fc-card`) defined in `client/src/preview.css`. The AI cannot invent new styles.
+3. **Static Styling**: All generated components use strict class names (e.g., `.fc-button`, `.fc-card`) defined in `client/src/preview.css`. The generator cannot invent new styles.
 
 ## 🚀 Getting Started
 
@@ -76,12 +76,12 @@ To ensure absolute determinism and safety:
 ## ⚠️ Known Limitations (Mockup Mode)
 
 - **Backend**: The Node.js/Express backend logic is simulated on the client-side for this prototype.
-- **AI Model**: Uses a heuristic mock (`agent-mock.ts`) instead of a real OpenAI API call. It responds to specific keywords like "dashboard", "login", "modal".
+- **Prompt Engine**: Uses a heuristic mock (`agent-mock.ts`) that responds to specific keywords like "dashboard", "login", "modal".
 - **Persistence**: Data is not saved to a database; it resets on refresh.
 
 ## 🔮 Future Improvements
 
-- Integrate actual OpenAI API for the Planner.
+- Integrate a backend planning service for more flexible prompt interpretation.
 - Implement the backend filesystem storage for version history.
 - Add "Diff Viewer" to visually show changes between versions.
 - Support streaming responses for a real-time "typing" effect.
